@@ -32,7 +32,8 @@ public class CommonFlows {
         log.info("Clickeando en el botón de login");
         loginButton.click();
 
-        commons.waitPageToLoad(2);
+        var productsLabelLocator = By.xpath("//span[text()='Products']");
+        commons.waitPageToLoad(productsLabelLocator, driver, 5, "Home Shopping page");
     }
 
     public void goToCart() {
@@ -48,7 +49,9 @@ public class CommonFlows {
 
         log.info("Clickeando en el botón de carrito");
         shoppingCartBadge.click();
-        commons.waitPageToLoad(2);
+
+        var checkoutButtonLocator = By.id("checkout");
+        commons.waitPageToLoad(checkoutButtonLocator, driver, 5, "Cart Page");
     }
 
     public void goToStepOne() {
@@ -59,6 +62,8 @@ public class CommonFlows {
 
         log.info("Clickeando en el botón de checkout");
         checkoutButton.click();
-        commons.waitPageToLoad(2);
+
+        var continueButtonLocator = By.id("continue");
+        commons.waitPageToLoad(continueButtonLocator, driver, 5, "Step One Page");
     }
 }

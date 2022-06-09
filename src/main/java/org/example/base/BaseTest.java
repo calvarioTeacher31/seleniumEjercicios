@@ -4,6 +4,7 @@ import io.github.bonigarcia.wdm.managers.ChromeDriverManager;
 import org.example.utilities.CommonFlows;
 import org.example.utilities.Commons;
 import org.example.utilities.Logs;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -15,9 +16,12 @@ public abstract class BaseTest {
     protected static final String mainUrl = "https://www.saucedemo.com/";
     protected Commons commons;
     protected CommonFlows commonFlows;
+    protected final String regression = "Regression";
+    protected final String smoke = "Smoke";
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     protected void setUpBase() {
+        var botImage = By.className("bot_column");
         log.debug("Seteando el driver de chrome");
         ChromeDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
@@ -33,10 +37,10 @@ public abstract class BaseTest {
 
         commons = new Commons();
         commonFlows = new CommonFlows(driver);
-        commons.waitPageToLoad(2);
+        commons.waitPageToLoad(botImage, driver, 5, "SauceLabs Index Page");
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     protected void tearDownBase() {
         log.debug("Matando al driver");
         driver.quit();

@@ -2,6 +2,7 @@ package org.example.utilities;
 
 import com.poiji.bind.Poiji;
 import org.example.models.CredentialsModel;
+import org.example.models.ErrorMessageModel;
 
 import java.io.File;
 import java.util.List;
@@ -11,7 +12,12 @@ public class ExcelReader {
     private final Logs log = new Logs();
 
     public List<CredentialsModel> getCredentials() {
-        log.debug("Leyendo credenciales: " + EXCEL_PATH);
+        log.debug("Reading credentials from excel: " + EXCEL_PATH);
         return Poiji.fromExcel(new File(EXCEL_PATH), CredentialsModel.class);
+    }
+
+    public List<ErrorMessageModel> getErrorMessages() {
+        log.debug("Reading error message from excel: " + EXCEL_PATH);
+        return Poiji.fromExcel(new File(EXCEL_PATH), ErrorMessageModel.class);
     }
 }

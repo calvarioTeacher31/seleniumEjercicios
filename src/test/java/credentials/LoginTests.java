@@ -7,7 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class LoginTests extends BaseTest {
-    @Test
+    @Test(groups = {smoke})
     public void urlIndexTest() {
         var currentUrl = driver.getCurrentUrl();
 
@@ -15,19 +15,23 @@ public class LoginTests extends BaseTest {
         Assert.assertEquals(mainUrl, currentUrl);
     }
 
-    @Test
+    @Test(groups = {regression}, enabled = false)
     public void urlNavigationTest() {
         var currentUrlInicio = driver.getCurrentUrl();
 
         log.info("Yendo a stackoverflow");
         driver.get("https://stackoverflow.com/");
 
-        commons.waitPageToLoad(2);
+        var loginButtonLocator = By.xpath("//a[text()='Log in']");
+
+        commons.waitPageToLoad(loginButtonLocator, driver, 5, "Stack Overflow Homepage");
 
         log.info("Presionado atrás en el browser");
         driver.navigate().back();
 
-        commons.waitPageToLoad(2);
+        var usernameInputLocator = By.id("user-name");
+
+        commons.waitPageToLoad(usernameInputLocator, driver, 5, "Saucelabs Home Page");
 
         var currentUrlFinal = driver.getCurrentUrl();
 
@@ -35,7 +39,7 @@ public class LoginTests extends BaseTest {
         Assert.assertEquals(currentUrlInicio, currentUrlFinal);
     }
 
-    @Test
+    @Test(groups = {regression})
     public void lockedCredentialsTest() {
         var dataProvider = new DataProviders();
         var credentials = dataProvider.getLockedCredentials();
