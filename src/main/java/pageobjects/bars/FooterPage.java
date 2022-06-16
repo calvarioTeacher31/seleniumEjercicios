@@ -1,7 +1,7 @@
-package org.example.pageobjects.bars;
+package pageobjects.bars;
 
-import org.example.base.BasePage;
-import org.example.models.UrlModel;
+import base.BasePage;
+import models.UrlModel;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

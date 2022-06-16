@@ -1,11 +1,11 @@
-package org.example.utilities;
+package utilities;
 
-import org.example.pageobjects.checkout.CartPage;
-import org.example.pageobjects.checkout.StepOnePage;
-import org.example.pageobjects.checkout.StepTwoPage;
-import org.example.pageobjects.credentials.LoginPage;
-import org.example.pageobjects.shopping.HomeShoppingPage;
 import org.openqa.selenium.WebDriver;
+import pageobjects.checkout.CartPage;
+import pageobjects.checkout.StepOnePage;
+import pageobjects.checkout.StepTwoPage;
+import pageobjects.credentials.LoginPage;
+import pageobjects.shopping.HomeShoppingPage;
 
 public class CommonFlows {
     private final Logs log = new Logs();

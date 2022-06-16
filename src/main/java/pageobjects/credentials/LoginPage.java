@@ -1,6 +1,6 @@
-package org.example.pageobjects.credentials;
+package pageobjects.credentials;
 
-import org.example.base.BasePage;
+import base.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;

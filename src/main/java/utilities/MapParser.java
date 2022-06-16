@@ -1,8 +1,8 @@
-package org.example.utilities;
+package utilities;
 
-import org.example.models.CredentialsModel;
-import org.example.models.ErrorMessageModel;
-import org.example.models.UrlModel;
+import models.CredentialsModel;
+import models.ErrorMessageModel;
+import models.UrlModel;
 
 import java.util.HashMap;
 

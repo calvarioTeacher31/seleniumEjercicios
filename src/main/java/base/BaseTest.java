@@ -1,15 +1,14 @@
-package org.example.base;
+package base;
 
-import org.example.utilities.CommonFlows;
-import org.example.utilities.DriverManager;
-import org.example.utilities.Logs;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
+import utilities.CommonFlows;
+import utilities.DriverManager;
+import utilities.Logs;
 
-@Listeners{}
-
+@Listeners({utilities.listeners.TestListeners.class, utilities.listeners.SuiteListeners.class})
 public abstract class BaseTest {
     protected WebDriver driver;
     protected final Logs log = new Logs();
@@ -21,10 +20,10 @@ public abstract class BaseTest {
     protected void setUpBase() {
         driver = new DriverManager().initLocalDriver();
 
-        log.debug("Maximizando la ventana");
+        log.debug("Maximizing the window");
         driver.manage().window().maximize();
 
-        log.debug("Borrando las cookies");
+        log.debug("Deleting all cookies");
         driver.manage().deleteAllCookies();
 
         initPages();
@@ -35,9 +34,12 @@ public abstract class BaseTest {
 
     @AfterMethod(alwaysRun = true)
     protected void tearDownBase() {
-        log.debug("Matando al driver");
+        log.debug("Killing the driver");
         driver.quit();
-        log.info("");
+    }
+
+    public WebDriver getDriver() {
+        return driver;
     }
 
     protected abstract void initPages();

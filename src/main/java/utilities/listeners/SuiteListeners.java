@@ -1,8 +1,9 @@
-package org.example.utilities.listeners;
+package utilities.listeners;
 
-import org.example.utilities.Logs;
 import org.testng.ISuite;
 import org.testng.ISuiteListener;
+import utilities.DriverManager;
+import utilities.Logs;
 
 public class SuiteListeners implements ISuiteListener {
     private final Logs log = new Logs();
@@ -10,6 +11,7 @@ public class SuiteListeners implements ISuiteListener {
     @Override
     public void onStart(ISuite suite) {
         log.startSuite(suite.getName());
+        new DriverManager().deleteScreenshotDirectory();
     }
 
     @Override

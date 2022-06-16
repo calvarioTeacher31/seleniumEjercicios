@@ -1,7 +1,7 @@
-package org.example.utilities;
+package utilities;
 
-import org.example.models.CredentialsModel;
-import org.example.models.UserDataModel;
+import models.CredentialsModel;
+import models.UserDataModel;
 import org.testng.annotations.DataProvider;
 
 public class DataProviders {
