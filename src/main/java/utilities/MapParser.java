@@ -2,6 +2,7 @@ package org.example.utilities;
 
 import org.example.models.CredentialsModel;
 import org.example.models.ErrorMessageModel;
+import org.example.models.UrlModel;
 
 import java.util.HashMap;
 
@@ -27,6 +28,18 @@ public class MapParser {
 
         for (var errorMessage : errorMessageList) {
             map.put(errorMessage.getKey(), errorMessage);
+        }
+
+        return map;
+    }
+
+    public HashMap<String, UrlModel> getUrlMap() {
+        log.debug("Creating url map");
+        var map = new HashMap<String, UrlModel>();
+        var urlList = new ExcelReader().getUrl();
+
+        for (var url : urlList) {
+            map.put(url.getKey(), url);
         }
 
         return map;
